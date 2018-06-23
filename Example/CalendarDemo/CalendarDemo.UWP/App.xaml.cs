@@ -59,7 +59,7 @@ namespace CalendarDemo.UWP
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
                 Xamarin.Forms.Forms.Init(e);
-                XamForms.Controls.Windows.Calendar.Init();
+                XamForms.Controls.UWP.Calendar.Init();
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {

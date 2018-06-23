@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Android.Graphics;
 using Xamarin.Forms;
 using System;
+using Android.Content;
 
 [assembly: Xamarin.Forms.ExportRenderer(typeof(CalendarButton), typeof(CalendarButtonRenderer))]
 namespace XamForms.Controls.Droid
@@ -15,6 +16,8 @@ namespace XamForms.Controls.Droid
 	[Preserve(AllMembers = true)]
 	public class CalendarButtonRenderer : ButtonRenderer
 	{
+        public CalendarButtonRenderer(Context context) : base(context) { }
+
 		protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.Button> e)
 		{
 			base.OnElementChanged(e);
@@ -168,7 +171,7 @@ namespace XamForms.Controls.Droid
 		{
 			base.Draw(canvas);
 			paint.Color = Pattern.TextColor.ToAndroid();
-			paint.TextSize = Android.Util.TypedValue.ApplyDimension(Android.Util.ComplexUnitType.Sp,Pattern.TextSize > 0 ? Pattern.TextSize : 12,Forms.Context.Resources.DisplayMetrics);
+			paint.TextSize = Android.Util.TypedValue.ApplyDimension(Android.Util.ComplexUnitType.Sp,Pattern.TextSize > 0 ? Pattern.TextSize : 12, Android.App.Application.Context.Resources.DisplayMetrics);
 			var bounds = new Rect();
 			paint.GetTextBounds(Pattern.Text, 0, Pattern.Text.Length, bounds);
 			var al = (int)Pattern.TextAlign;
